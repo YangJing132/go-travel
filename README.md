@@ -1,7 +1,7 @@
 # go-travel
 
 > A Vue.js project
-<!-- 32 -6 -->
+<!-- 15 8-7-->
 ## Build Setup
 
 ``` bash
