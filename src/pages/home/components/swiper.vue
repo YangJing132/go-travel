@@ -3,8 +3,8 @@
   <div class="wrapper">
     <swiper :options="swiperOption" ref="mySwiper" v-if="showSwiper">
       <!-- slides -->
-      <swiper-slide v-for='item of swiperList' :key='item.id'>
-        <img class="swiper-img" :src="item.imgurl">
+      <swiper-slide v-for='item of list' :key='item.id'>
+        <img class="swiper-img" :src="item.imgUrl">
       </swiper-slide>
       <!-- Optional controls -->
       <div class="swiper-pagination"  slot="pagination"></div>
@@ -18,11 +18,19 @@
 <script>
   export default {
     name: 'HomeSwiper',
+    props:{
+      list: Array
+    },
     data () {
       return {
         swiperOption: {
           pagination:'.swiper-pagination',
-          loop: true
+          loop: true,
+          autoplay: true,
+          speed: 3000,
+          autoplayDisableOnInteraction: false,
+          observer:true,//修改swiper自己或子元素时，自动初始化swiper
+          observeParents:true//修改swiper的父元素时，自动初始化swiper
         },
         swiperList:[
           {
@@ -53,23 +61,15 @@
       }
     },
     computed: {
-      swiper() {
-        return this.$refs.mySwiper.swiper
-      },
       showSwiper () {
-        return this.swiperList.length
+        return this.list.length
       }
     },
     mounted() {
       // current swiper instance
       // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
-      console.log('this is current swiper instance object', this.swiper)
-      this.swiper.slideTo(3, 1000, false);
-      // var this_=this;
-      
-      // setInterval(()=>{
-      //   this_.swiper.slideTo(3, 1000, false)
-      // },1000)
+      // console.log('this is current swiper instance object', this.swiper)
+      // this.swiper.slideTo(3, 1000, false);
     }
   }
 </script>
@@ -81,7 +81,7 @@
     overflow: hidden
     width: 100%
     height: 0
-    padding-bottom: 25.6%
+    padding-bottom: 31.25%
     background: #eee
     .swiper-img
       width: 100%

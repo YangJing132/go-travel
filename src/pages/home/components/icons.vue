@@ -1,32 +1,139 @@
 <template>
 	<div class='icons'>
-		<div class="icon">
-			
-		</div>
+		<swiper :options="swiperOption">
+			<swiper-slide v-for="(page, index) of pages" :key="index">
+				<div class="icon" v-for="item of page" :key="item.id">
+					<div class="icon-img">
+						<img class='icon-img-content' :src="item.imgUrl">
+					</div>	
+		            <p class="icon-desc">{{item.desc}}</p>	      
+				</div>
+			</swiper-slide>
+		</swiper>
 	</div>
 </template>
 <script>
 export default {
     name: 'Icons',
+    props:{
+      list: Array
+    },
     data (){
     	return {
-
+    		iconlist:[
+    			{
+    				id:'01',
+    				class:'jipiao',
+    				desc:'机票',
+    				imgurl:'http://s.qunarzz.com/touch_home/imgs/flight.png'
+    			},
+    			{
+    				id:'02',
+    				class:'hotel',
+    				desc:'酒店',
+    				imgurl:'http://s.qunarzz.com/touch_home/imgs/hotel.png'
+    			},
+    			{
+    				id:'03',
+    				class:'holiday',
+    				desc:'度假',
+    				imgurl:'http://s.qunarzz.com/touch_home/imgs/holiday.png'
+    			},
+    			{
+    				id:'04',
+    				class:'jipiao',
+    				desc:'机票4',
+    				imgurl:'http://s.qunarzz.com/touch_home/imgs/flight.png'
+    			},
+    			{
+    				id:'05',
+    				class:'jipiao',
+    				desc:'机票5',
+    				imgurl:'http://s.qunarzz.com/touch_home/imgs/flight.png'
+    			},
+    			{
+    				id:'06',
+    				class:'jipiao',
+    				desc:'机票6',
+    				imgurl:'http://s.qunarzz.com/touch_home/imgs/flight.png'
+    			},
+    			{
+    				id:'07',
+    				class:'jipiao',
+    				desc:'机票7',
+    				imgurl:'http://s.qunarzz.com/touch_home/imgs/flight.png'
+    			},
+    			{
+    				id:'08',
+    				class:'jipiao',
+    				desc:'机票8',
+    				imgurl:'http://s.qunarzz.com/touch_home/imgs/flight.png'
+    			},
+    			{
+    				id:'09',
+    				class:'jipiao',
+    				desc:'机票9',
+    				imgurl:'http://s.qunarzz.com/touch_home/imgs/flight.png'
+    			},
+    		],
+    		swiperOption: {
+	        	autoplay: false
+	      	}
     	}
-    }
+    },
+    computed: {
+	    pages () {
+	      const pages = []
+	      this.list.forEach((item, index) => {
+	        const page = Math.floor(index / 8)//向下取整  页码
+	        if (!pages[page]) {
+	          pages[page] = []
+	        }
+	        pages[page].push(item)
+	      })
+	      return pages
+	    }
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
-	.icons
-		width:100%
-		height:0
-		padding-bottom:50%;
-		background: pink
-		overflow:hidden
-		.icon
-			width:25%
-			float:left
-			height:0
-			padding-bottom:25%;
-			background:red
+ @import '~styles/varibles.styl'
+ @import '~styles/mixins.styl'
+  .icons >>> .swiper-container
+    height: 0
+    padding-bottom: 50%
+  .icons
+    margin-top: .1rem
+    .icon
+      position: relative
+      overflow: hidden
+      float: left
+      width: 25%
+      height: 0
+      padding-bottom: 25%
+      .icon-img
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: .44rem
+        box-sizing: border-box
+        padding: .1rem
+        overflow:hidden
+        .icon-img-content
+          display: block
+          margin: 0 auto
+          height: 100%
+      .icon-desc
+        position: absolute
+        left: 0
+        right: 0
+        bottom: 0
+        height: .44rem
+        line-height: .44rem
+        text-align: center
+        color: $darkTextColor
+        ellipsis()
+
 </style>
