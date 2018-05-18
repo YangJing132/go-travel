@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div>
     <router-link
       tag="div"
       to="/"
@@ -39,7 +39,7 @@ export default {
       if (top > 60) {
         let opacity = top / 140
         opacity = opacity > 1 ? 1 : opacity
-        console.log(opacity)
+        // console.log(opacity)
         this.opacityStyle = { opacity }
         this.showAbs = false
       } else {
@@ -61,8 +61,6 @@ export default {
 
 <style lang="stylus" scoped>
   @import '~styles/varibles.styl'
-  .content
-    height: 50rem
   .header-abs
     position: absolute
     left: .2rem
