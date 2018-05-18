@@ -38,6 +38,7 @@ export default {
     }
   },
   updated () {
+    //渲染完成
     this.startY = this.$refs['A'][0].offsetTop
   },
   methods: {

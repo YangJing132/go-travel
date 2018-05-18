@@ -6,7 +6,8 @@
         <div class="button-list">
           <div class="button-wrapper">
             <div class="button">
-            	<!-- {{this.currentCity}} -->
+            	{{this.currentCity}}
+            	<!-- {{this.$store.state.city}} -->
         	</div>
           </div>
         </div>
@@ -48,7 +49,8 @@
 
 <script>
 import Bscroll from 'better-scroll'
-// import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
+
 // letter是从兄弟组件alphabet组件传过来的
 export default {
   name: 'CityList',
@@ -57,22 +59,26 @@ export default {
     cities: Object,
     letter: String
   },
-  // computed: {
-  //   ...mapState({
-  //     currentCity: 'city'
-  //   })
-  // },
+  computed: {
+    ...mapState({
+      currentCity: 'city'
+    })
+  },
   methods: {
     handleCityClick (city) {
       this.changeCity(city)
+      // this.$store.commit('changeCity',city)
       this.$router.push('/')
     },
-    // ...mapMutations(['changeCity'])
+    ...mapMutations(['changeCity'])
   },
+  //侦听器
   watch: {
     letter () {
       if (this.letter) {
+      	//获取对应的区域
         const element = this.$refs[this.letter][0]
+        //自动滚动到某元素
         this.scroll.scrollToElement(element)
       }
     }

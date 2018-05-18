@@ -6,6 +6,8 @@ import App from './App'
 import router from './router'
 // 点击延迟300ms解决方案
 import fastClick from 'fastclick'
+// vuex
+import store from './store'
 // 加载reset样式
 import 'styles/reset.css'
 // 1像素边框解决方案
@@ -26,6 +28,7 @@ Vue.use(VueAwesomeSwiper, /* { default global options } */)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

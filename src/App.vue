@@ -1,9 +1,11 @@
 <!-- 单文件组件 -->
 <template>
   <div id="app">
-    
+  	<!-- keep-alive 路由的内容被加载过一次后就把内容放到内存里面 -->
+    <keep-alive>
     <!-- 显示的是当前路由地址所对应的内容 -->
-    <router-view/>
+	    <router-view/>
+	</keep-alive>
   </div>
 </template>
 

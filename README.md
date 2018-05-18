@@ -1,7 +1,7 @@
 # go-travel
 
 > A Vue.js project
-<!-- 15 8-7-->
+<!-- 12-->
 ## Build Setup
 
 ``` bash
@@ -29,3 +29,8 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+# Git提交
+# 1. git add .
+# 2. git commit -m 'project init'  project init	是对本次提交的说明提示
+# 3. git push
